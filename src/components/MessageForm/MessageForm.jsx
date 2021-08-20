@@ -4,8 +4,7 @@ import { MyButton } from '../UI/button/MyButton';
 
 export const MessageForm = (props) => {
     return (
-    <div>
-       <form>
+    <>
         <MyInput 
           value={props.text}
           onChange={e => props.setText(e.target.value)}
@@ -13,7 +12,9 @@ export const MessageForm = (props) => {
           placeholder='Сообщение'
         />
         <MyButton onClick={props.onSubmit}>Send</MyButton>
-      </form>
-    </div>
+    </>
     )
 }
+
+// отправка сообщения при нажатии на кнопку из материал ЮАЙ
+// форма с инпутом и кнопкой из материал ЮАЙ

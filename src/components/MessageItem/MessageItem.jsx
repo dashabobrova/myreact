@@ -1,5 +1,6 @@
 import React from "react";
 import style from './MessageItem.module.scss';
+import {number, shape, string} from 'prop-types';
 
 export const MessageItem = (props) => {
     return (
@@ -13,4 +14,12 @@ export const MessageItem = (props) => {
         </div>
     </div>
     )
-}
+    }
+
+    MessageItem.propTypes = {
+        message: shape ({
+            id: number.isRequired,
+            text: string.isRequired,
+            author: string.isRequired
+        }).isRequired,
+    }

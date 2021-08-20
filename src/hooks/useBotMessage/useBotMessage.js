@@ -6,8 +6,9 @@ export const useBotMessage = (messageList, setMessageList, botName, userName) =>
         if(messageList.length>0) {
           if(messageList[messageList.length-1].author === userName){
             const newMessage = {
-              text: 'сообщение от бота', 
-              author: botName
+              id: Date.now(),
+              text: 'сообщение от бота',
+              author: botName,
             } 
             setTimeout(() =>setMessageList([...messageList, newMessage]), 1500)
           }

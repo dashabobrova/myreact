@@ -1,8 +1,12 @@
 import React from "react";
-import style from './MyInput.module.scss';
+import TextField from "@material-ui/core/TextField";
 
 export const MyInput = (props) => {
     return (
-        <input {...props} className={style.myInput}/>
+        <TextField color='primary'
+            inputRef={input => input && input.focus()} //  автофокус при открытии стр и после отправки сообщения
+            /* autoFocus и autoFocus={true} не работает при отправке сообщения - только при открытии страницы*/
+            {...props}
+        />
     )
 }
