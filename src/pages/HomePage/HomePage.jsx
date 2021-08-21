@@ -1,19 +1,14 @@
 import React from "react";
-import { Switch, Route } from 'react-router-dom';
-import { Profile } from '../Profile/Profile';
-import { ChatPage } from '../ChatPage/ChatPage';
+import { Link } from 'react-router-dom';
 
 export const HomePage = (props) => {
     return (
         <div>HomePage
-            <Switch>
-                <Route path='/chatpage'>
-                    <ChatPage/>
-                </Route>
-                <Route path='/profile'>
-                    <Profile/>
-                </Route>
-            </Switch> 
+            <ul>
+                <li><Link to='/chatpage'>chats</Link></li>
+                <li><Link to='/profile'>profile</Link></li>
+            </ul>
+           
         </div>
     )
 }

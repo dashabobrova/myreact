@@ -1,17 +1,31 @@
 import './App.scss';
 import { HomePage } from './pages/HomePage/HomePage';
-/* import React from 'react';
-import { MessageList } from './components/MessageList/MessageList';
-import { MessageForm } from './components/MessageForm/MessageForm.jsx';
-import { useAddMessage } from './hooks/useAddMessage/useAddMessage';
-import { useBotMessage } from './hooks/useBotMessage/useBotMessage';
-import { ChatList } from './components/ChatList/ChatList'; */
-/* import Grid from '@material-ui/core/Grid';
-import { createTheme, ThemeProvider } from '@material-ui/core'; */
+import { Switch, Route } from 'react-router-dom';
+import { Profile } from './pages/Profile/Profile';
+import { ChatPage } from './pages/ChatPage/ChatPage';
 
 const App = () => {
   return (
-    <HomePage/>
+    <>
+    <Switch>
+      <Route path='/chatpage'>
+          <ChatPage/>
+      </Route>
+
+      <Route path='/profile'>
+          <Profile/>
+      </Route>
+
+      <Route exact path="/">
+          <HomePage />
+        </Route>
+
+        <Route>
+          <h3>Page not found</h3>
+        </Route>
+        
+  </Switch> 
+</>
   );
 }
 

@@ -8,7 +8,7 @@ import { useAddMessage } from "../../hooks/useAddMessage/useAddMessage";
 import { useBotMessage } from "../../hooks/useBotMessage/useBotMessage";
 
 export const ChatPage = (props) => {
-    const userName = 'Mary'; 
+    const userName = 'Me'; 
     const botName = 'bot';
 
     const [messageList, text, { setMessageList, setText, onSubmit } ]  = useAddMessage(userName);
@@ -23,25 +23,25 @@ export const ChatPage = (props) => {
       })
     
     return (
-        <ThemeProvider theme={theme}>
-    <div className='app_container'>
-      <Grid container spacing={3} className="App" >
+      <ThemeProvider theme={theme}>
+        <div className='app_container'>
+          <Grid container spacing={3} className="App" >
 
-        <Grid item xs={2}>
-          <ChatList />
-        </Grid>
+            <Grid item xs={2}>
+              <ChatList />
+            </Grid>
 
-        <Grid item xs={6}>
-          <Grid item xs={6}>
-            <MessageForm onSubmit={onSubmit} text={text} setText={setText}/>
+            <Grid item xs={6}>
+              <Grid item xs={6}>
+                <MessageForm onSubmit={onSubmit} text={text} setText={setText}/>
+              </Grid>
+              <Grid item xs={6}>
+                <MessageList messageList={messageList}/>
+              </Grid>
+            </Grid>
+
           </Grid>
-          <Grid item xs={6}>
-            <MessageList messageList={messageList}/>
-          </Grid>
-        </Grid>
-
-      </Grid>
-      </div>
+        </div>
       </ThemeProvider>
     )
 }
