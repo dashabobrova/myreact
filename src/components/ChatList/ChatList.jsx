@@ -10,8 +10,6 @@ export const ChatList = () => {
         {id:3, name:'Vanya'}
     ])
 
- /*    Нужно использовать List !!!!!! */
-
     return (
         <List>
         
