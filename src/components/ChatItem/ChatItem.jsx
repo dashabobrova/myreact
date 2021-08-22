@@ -1,6 +1,6 @@
 import React from "react";
 import ListItem from '@material-ui/core/ListItem';
-import {shape, string} from 'prop-types';
+import {shape, string, number} from 'prop-types';
 
 export const ChatItem = (props) => {
     return (
@@ -10,7 +10,7 @@ export const ChatItem = (props) => {
 
 ChatItem.propTypes = {
     chat: shape ({
-        id: string.isRequired,
+        id: number.isRequired,
         name: string.isRequired,
     }).isRequired,
 }

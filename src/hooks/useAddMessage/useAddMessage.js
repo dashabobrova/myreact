@@ -2,7 +2,8 @@
 import { useState } from 'react';
 
 export const useAddMessage = (userName) => {
-  const [messageList, setMessageList] = useState([])
+  const [messageList, setMessageList] = useState([]) //стейт сообщений, который у каждого чата должен быть свой
+
   const [text, setText] = useState('')
 
   const onSubmit = (e) => {

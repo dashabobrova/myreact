@@ -1,19 +1,21 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 export const Chat = ({chatList}) => {
     const {chatId} = useParams();
 
-    /* console.log(chatList); */
+    const currentChat = chatList.find(({id}) => String(id) === chatId);
+    // String(id) - преобразование числа в строку для корректного отображения url
 
-    const currentChat = chatList.find(({id}) => id === chatId);
+    // корректное поведение при отсутствии искомого чата
+    if(!currentChat){
+        return <Redirect to='/chatpage'/>
+    }
 
     return (
-        <div>
-            {/* Chat: {chatId} */}
             <p>
+                {/* Здесь выводить сообщения */}
                 {currentChat.name}: {currentChat.id}
             </p>
-        </div>
     )
 }

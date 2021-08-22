@@ -5,6 +5,7 @@ import { Profile } from './pages/Profile/Profile';
 import { ChatPage } from './pages/ChatPage/ChatPage';
 
 const App = () => {
+
   return (
     <>
     <Switch>
