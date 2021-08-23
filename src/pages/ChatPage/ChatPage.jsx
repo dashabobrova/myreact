@@ -2,19 +2,12 @@ import React, { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { ChatList } from "../../components/ChatList/ChatList";
-import { MessageForm } from "../../components/MessageForm/MessageForm";
-import { MessageList } from "../../components/MessageList/MessageList";
-import { useAddMessage } from "../../hooks/useAddMessage/useAddMessage";
-import { useBotMessage } from "../../hooks/useBotMessage/useBotMessage";
 import { ChatForm } from '../../components/ChatForm/ChatForm';
+import { Route } from "react-router";
+import { Chat } from "../Chat/Chat";
+import s from './ChatPage.module.scss'
 
 export const ChatPage = (props) => {
-    const userName = 'Me'; 
-    const botName = 'bot';
-
-    const [messageList, text, { setMessageList, setText, onSubmit } ]  = useAddMessage(userName);
-    useBotMessage(messageList, setMessageList, botName, userName);
-
     const theme = createTheme({ //тема material UI
         palette: {
           primary: {
@@ -29,26 +22,28 @@ export const ChatPage = (props) => {
       setChatList([...chatList, newChat])
     }
 
+    const removeChat = (chat) => {
+      setChatList(chatList.filter(p => p.id !== chat.id))
+    }
+
     return (
       <ThemeProvider theme={theme}>
-        <div className='app_container'>
-          <Grid container spacing={3} className="App" >
 
-            <Grid item xs={4}>
-              <ChatForm create={createChat}/>
-              <ChatList chatList={chatList} setChatList={setChatList}/>
-            </Grid>
+        <div className={s.chatpage_container}>
 
-            <Grid item xs={8}>
-              <Grid item xs={6}>
-                <MessageForm onSubmit={onSubmit} text={text} setText={setText}/>
-              </Grid>
-              <Grid item xs={6}>
-                <MessageList messageList={messageList}/>
-              </Grid>
-            </Grid>
+          <div className={s.chatpage_container_left}>
+            <ChatForm create={createChat}/>
+            <ChatList remove={removeChat} chatList={chatList} setChatList={setChatList}/>
+          </div>
 
-          </Grid>
+          <div className={s.chatpage_container_right}>
+                
+                <h1>чат</h1>
+                <Route to={'/chats/:chatId'}>
+                  <Chat chatList={chatList}/>
+                </Route>
+          </div>
+
         </div>
       </ThemeProvider>
     )
