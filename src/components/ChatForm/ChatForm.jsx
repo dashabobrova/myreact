@@ -7,7 +7,6 @@ export const ChatForm = ({create}) => {
 
     const addNewChat = (e) => {
         e.preventDefault();
-        /* setChatList([...chatList, {...chat, id: Date.now(), name: chat.chatTitle}]); */
         const newChat = {
             ...chat, id: Date.now(), name: chat.chatTitle
         }

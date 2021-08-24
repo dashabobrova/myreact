@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Grid from '@material-ui/core/Grid';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { ChatList } from "../../components/ChatList/ChatList";
 import { ChatForm } from '../../components/ChatForm/ChatForm';
@@ -16,7 +15,9 @@ export const ChatPage = (props) => {
         }
       })
 
-    const [chatList, setChatList] = useState([])
+    const [chatList, setChatList] = useState([ //изначально сделать пустым
+      {id:Date.now(), name:'Катя'},
+    ])
 
     const createChat = (newChat) => {
       setChatList([...chatList, newChat])
@@ -37,11 +38,9 @@ export const ChatPage = (props) => {
           </div>
 
           <div className={s.chatpage_container_right}>
-                
-                <h1>чат</h1>
-                <Route to={'/chats/:chatId'}>
-                  <Chat chatList={chatList}/>
-                </Route>
+              <Route to={'/chats/:chatId'}>
+                <Chat/>
+              </Route>
           </div>
 
         </div>

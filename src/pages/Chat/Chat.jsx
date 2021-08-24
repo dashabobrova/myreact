@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import Grid from '@material-ui/core/Grid';
 import { MessageForm } from "../../components/MessageForm/MessageForm";
 import { MessageList } from "../../components/MessageList/MessageList";
 import { useBotMessage } from "../../hooks/useBotMessage/useBotMessage";
@@ -13,52 +12,42 @@ export const Chat = ({chatList}) => {
     const [messageList, text, { setMessageList, setText, onSubmit } ]  = useAddMessage(userName);
     useBotMessage(messageList, setMessageList, botName, userName);
     
-    
 // !!!!!!!!!!!!!! изменить allChats на intermediateChatStorage
     const [allChats, setAllChats] = useState([]); // [{ id: '', message: [] }]
-
+  
     const {chatId} = useParams();
-    /* как сохранить список сообщений текущего открытого чата в сторе где ты связываешь чат и его сообщения */
-    
+
     useEffect(() => {
-        const searchById = (chat) => { // делаешь поиск есть ли в allChats отрытый чат
+        const searchById = (chat) => { // поиск есть ли в allChats отрытый чат
             setAllChats(allChats.filter(p => p.chatId !== chat.id))
         }
         
         if(!searchById) { // если нет, то создай и присвой в стор messageList пустой массив
+            const newAllChat = { 
+                id: chatId, 
+                message: []
+            } 
+            setAllChats([...allChats, newAllChat])
             setMessageList([])
-        } if (searchById) { // если есть то присвой список сообщений чата в стор messageList 
-            setMessageList([...messageList, allChats])
+        } if (searchById) { //  если чат в allChats есть, то нужно достать его список сообщений и затем присвоить в стор messageList
+            const chatMessageList = allChats.message;
+            setMessageList([...messageList, chatMessageList])
         }
 
-        const newAllChat = { 
-            id: chatId, 
-            message: allChats.message
-        } 
+    }, [chatId]); 
 
-        setAllChats([...allChats, newAllChat])
-
-    }, [chatId]); //при открытии чата
-
-/* 
-1. найти по id старого чата объект в allChats
-2. присвой ему весь список сообщений этого чата
-3. сбрось список сообщений в сторе messageList */
-
-/*     useEffect(() => {        
+    useEffect(() => {        
         const oldChatId = allChats.find( ({oldChat}) => oldChat.id === chatId);
         oldChatId =  allChats.messageList;
+ 
+        setAllChats([...allChats, messageList])
 
         setMessageList([])
-    }, [allChats]); // При изменении чата
- 
- */
+        
+    }, [allChats]); 
 
-    const currentChat = chatList.find(({id}) => String(id) === chatId);
-    // String(id) - преобразование числа в строку для корректного отображения url
 
-    // корректное поведение при отсутствии искомого чата
-    if(!currentChat){
+    if(!{chatId}){ // корректное поведение при отсутствии искомого чата
         return <Redirect to='/chatpage'/>
     }
 
