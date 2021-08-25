@@ -8,10 +8,7 @@ export const ChatList = ({chatList, remove}/* , {setChatList} */) => {
 
            { 
                 chatList.map((chat) => 
-                    <>
                             <ChatItem remove={remove} chat={chat} key={chat.id}></ChatItem>
-                           
-                    </>
                 )
            }
 

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { ChatList } from "../../components/ChatList/ChatList";
 import { ChatForm } from '../../components/ChatForm/ChatForm';
 import { Route } from "react-router";
 import { Chat } from "../Chat/Chat";
 import s from './ChatPage.module.scss'
+import { useAddRemoveChat } from "../../hooks/useAddRemoveChat/useAddRemoveChat";
 
 export const ChatPage = (props) => {
     const theme = createTheme({ //тема material UI
@@ -15,34 +16,21 @@ export const ChatPage = (props) => {
         }
       })
 
-    const [chatList, setChatList] = useState([ //изначально сделать пустым
-      {id:Date.now(), name:'Катя'},
-    ])
-
-    const createChat = (newChat) => {
-      setChatList([...chatList, newChat])
-    }
-
-    const removeChat = (chat) => {
-      setChatList(chatList.filter(p => p.id !== chat.id))
-    }
+    const [chatList, { createChat, removeChat, setChatList }]= useAddRemoveChat();
 
     return (
       <ThemeProvider theme={theme}>
-
         <div className={s.chatpage_container}>
-
           <div className={s.chatpage_container_left}>
             <ChatForm create={createChat}/>
-            <ChatList remove={removeChat} chatList={chatList} setChatList={setChatList}/>
+            <ChatList remove={removeChat} chatList={chatList} setChatList={setChatList} />
           </div>
 
           <div className={s.chatpage_container_right}>
-              <Route to={'/chats/:chatId'}>
+              <Route path={'/chatpage/:chatId'}>
                 <Chat/>
               </Route>
           </div>
-
         </div>
       </ThemeProvider>
     )
