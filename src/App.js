@@ -4,19 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Profile } from './pages/Profile/Profile';
 import { ChatPage } from './pages/ChatPage/ChatPage';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
-import { createActionCreateCheckbox} from './store/checkbox/checkboxActions';
-
-store.dispatch(createActionCreateCheckbox
-  (
-      { 
-        text: 'checkbox 1', 
-        status: false, 
-        id: Date.now()
-      }
-  )
-)
-
+import { store } from './store/store'
 
 const App = () => {
 

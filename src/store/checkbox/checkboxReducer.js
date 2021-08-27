@@ -1,22 +1,16 @@
-import { CHANGE_CHECKBOX, CREATE_CHECKBOX } from "./checkboxActions"
-
+import { CHANGE_CHECKBOX} from "./checkboxActions"
 
 const initialState = {
-    checkboxList: []
+    checkboxList: [
+        { 
+            status: false, 
+            id: Date.now()
+        }
+    ]
 }
 
 export const checkboxReducer = (state = initialState, action) => {
     switch(action.type) {
-
-        case CREATE_CHECKBOX: {
-            return {
-                checkboxList: [
-                    ...state.checkboxList,
-                    action.payLoad 
-                    // новый массив (я не обновляю, поэтому нужно избавиться) - перенести наполнение сразу в initialState*/
-                ]
-            }
-        }
 
         case CHANGE_CHECKBOX: {
             const checkboxList = [...state.checkboxList]; // копия списка
