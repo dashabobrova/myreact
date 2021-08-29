@@ -1,16 +1,13 @@
 import React from "react";
 import propTypes from 'prop-types'
 import { messagesConnect } from "../../connects/messages/messagesConnect";
+import { MessageItem } from "../MessageItem/MessageItem";
 
-export const MessageListRender = ({messages, ...rest}) => {
-    console.log(messages, rest)
+export const MessageListRender = ({messages}) => {
     return (
     <div>
         {
-            messages?.map (({content, id, author}) => <li key={id}>
-                {author}:
-                {content}
-            </li>)
+            messages?.map (({content, id, author}) => <MessageItem content={content} id={id} author={author} key={id}/>)
         }
     </div>
     )
