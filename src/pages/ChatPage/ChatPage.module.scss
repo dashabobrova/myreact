@@ -1,6 +1,6 @@
 .chatpage_container{
     background-color: red;
-    width: 1200px;
+    width: 800px;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
@@ -9,14 +9,14 @@
 .chatpage_container_left{
     background-color: rgb(235, 199, 199);
     height: 300px;
-    width:300px;
+    width:200px;
     padding-left: 20px;
     padding-top: 20px;
 }
 
 .chatpage_container_right{
     background-color: rgb(174, 196, 209);
-    width: 900px;
+    width: 600px;
     height: 300px;
     padding-left: 20px;
     padding-top: 20px;

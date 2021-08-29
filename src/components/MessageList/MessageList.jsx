@@ -1,12 +1,28 @@
 import React from "react";
-import { MessageItem } from '../MessageItem/MessageItem';
+import propTypes from 'prop-types'
+import { messagesConnect } from "../../connects/messages/messagesConnect";
 
-export const MessageList = ({messageList}) => {
+export const MessageListRender = ({messages, ...rest}) => {
+    console.log(messages, rest)
     return (
     <div>
-        {messageList.map ( (message, index) => 
-            <MessageItem /* number={index + 1} */ message={message} key={message.id}/>
-        )}
+        {
+            messages?.map (({content, id, author}) => <li key={id}>
+                {author}:
+                {content}
+            </li>)
+        }
     </div>
     )
 }
+
+MessageListRender.propTypes = {
+    messages: propTypes.arrayOf(propTypes.shape({
+        id: propTypes.string,
+        chatId: propTypes.string,
+        content: propTypes.string,
+        author: propTypes.string,
+    }))
+}
+
+export const MessageList = messagesConnect(MessageListRender)
