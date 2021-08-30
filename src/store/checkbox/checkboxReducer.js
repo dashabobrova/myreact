@@ -1,28 +1,16 @@
-import { CHANGE_CHECKBOX} from "./checkboxActions"
+import { CHANGE_CHECKBOX, CREATE_CHECKBOX } from "./checkboxActions"
+
 
 const initialState = {
-    checkboxList: [
-        { 
-            status: false, 
-            id: Date.now()
-        }
-    ]
+    status: true
 }
 
 export const checkboxReducer = (state = initialState, action) => {
     switch(action.type) {
 
         case CHANGE_CHECKBOX: {
-            const checkboxList = [...state.checkboxList]; // копия списка
-            const currentCheckboxIndex = checkboxList.findIndex((checkbox) => checkbox.id === action.payLoad.id); // поиск индекса чекбокса, который хочу изменить
-
-            checkboxList[currentCheckboxIndex] = { 
-                ...checkboxList[currentCheckboxIndex], // копия объекта по индексу
-                status: !action.payLoad.status // присваиваю новый статус (! - false меняю на true/ true меняю на false) изменяемому объекту
-            }
-
-            return {
-                checkboxList // возвращаю список с измененным элементов
+            return { 
+                status: !action.payLoad.status 
             }
         }
 

@@ -1,6 +1,6 @@
 export const CHANGE_CHECKBOX = 'CHANGE_CHECKBOX'
 
-export const createActionChangeCheckbox = (id, status) => ({
+export const createActionChangeCheckbox = (status) => ({
     type: CHANGE_CHECKBOX,
-    payLoad: { id, status }
+    payLoad: status 
 })
