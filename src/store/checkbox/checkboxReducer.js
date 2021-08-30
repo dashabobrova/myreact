@@ -1,4 +1,4 @@
-import { CHANGE_CHECKBOX, CREATE_CHECKBOX } from "./checkboxActions"
+import { CHANGE_CHECKBOX} from "./checkboxActions"
 
 
 const initialState = {
@@ -10,7 +10,9 @@ export const checkboxReducer = (state = initialState, action) => {
 
         case CHANGE_CHECKBOX: {
             return { 
-                status: !action.payLoad.status 
+                status: !state.status 
+               /*  Пишу не (status: !action.payLoad.status ), а (status: !state.status), потому что у state всего 1 поле
+                если бы было больше полей, то нужно было бы {...state, } чтобы сохранить старые поля */
             }
         }
 

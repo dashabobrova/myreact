@@ -12,9 +12,9 @@ export const Profile = () => {
     return (
         <div className={s.checkbox_wrapper}>
                 <Checkbox
-                    checked={stateStatus}
+                    checked={stateStatus.status} //state - объект, status - свойство, которое изменяется
                     onChange={() => {
-                        dispatch(createActionChangeCheckbox(stateStatus))
+                        dispatch(createActionChangeCheckbox(stateStatus.status))
                     }}
                     inputProps={{'aria-label': 'primary checkbox'}}
                 />
