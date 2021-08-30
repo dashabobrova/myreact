@@ -6,15 +6,15 @@ import s from './Profile.module.scss'
 
 export const Profile = () => {
 
-    const status = useSelector((state) => state.status);
+    const stateStatus = useSelector((state) => state);
     const dispatch = useDispatch();
     
     return (
         <div className={s.checkbox_wrapper}>
                 <Checkbox
-                    checked={status}
+                    checked={stateStatus}
                     onChange={() => {
-                        dispatch(createActionChangeCheckbox(status))
+                        dispatch(createActionChangeCheckbox(stateStatus))
                     }}
                     inputProps={{'aria-label': 'primary checkbox'}}
                 />
