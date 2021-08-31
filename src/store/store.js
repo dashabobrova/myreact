@@ -1,4 +1,11 @@
 import { createStore } from 'redux';
-import { checkboxReducer } from './checkbox/checkboxReducer';
+import { combineReducers } from 'redux';
+import { chatsReducer } from './chats';
+import { messageReducer } from './messages';
 
-export const store = createStore(checkboxReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const rootReducer = combineReducers({
+    chats: chatsReducer,
+    messages: messageReducer
+})
+
+export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

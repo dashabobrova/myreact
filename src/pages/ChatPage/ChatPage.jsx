@@ -1,11 +1,10 @@
 import React from "react";
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { ChatList } from "../../components/ChatList/ChatList";
-import { ChatForm } from '../../components/ChatForm/ChatForm';
 import { Route } from "react-router";
 import { Chat } from "../Chat/Chat";
 import s from './ChatPage.module.scss'
-import { useAddRemoveChat } from "../../hooks/useAddRemoveChat/useAddRemoveChat";
+import { CreateChatForm } from "../../components/CreateChatForm/CreateChatForm";
 
 export const ChatPage = (props) => {
     const theme = createTheme({ //тема material UI
@@ -16,14 +15,12 @@ export const ChatPage = (props) => {
         }
       })
 
-    const [chatList, { createChat, removeChat, setChatList }]= useAddRemoveChat();
-
     return (
       <ThemeProvider theme={theme}>
         <div className={s.chatpage_container}>
           <div className={s.chatpage_container_left}>
-            <ChatForm create={createChat}/>
-            <ChatList remove={removeChat} chatList={chatList} setChatList={setChatList} />
+            <CreateChatForm />
+            <ChatList list={[{id: '1', title: '1'}]}/>
           </div>
 
           <div className={s.chatpage_container_right}>
@@ -35,3 +32,4 @@ export const ChatPage = (props) => {
       </ThemeProvider>
     )
 }
+
