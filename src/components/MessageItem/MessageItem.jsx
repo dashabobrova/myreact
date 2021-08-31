@@ -1,25 +1,32 @@
 import React from "react";
-import style from './MessageItem.module.scss';
-import {number, shape, string} from 'prop-types';
+import { messagesConnect } from "../../connects/messages/messagesConnect";
+import propTypes from 'prop-types';
+import s from './MessageItem.module.scss';
 
-export const MessageItem = (props) => {
+// content, author пропсами передаются из MessageList; это ключи массива messages объекта messages в store
+/* добавляется Render, чтобы отметить, что это чистый компонент без хоков. 
+Дальше Render передается в Connect и сохраняю в MessageList, который дальше будет использоваться в приложении */
+export const MessageItemRender = ({content, author}) => {
     return (
-    <div className={style.message}>
-        <div className={style.message__content}>
+        <div className={s.message}>
+        <div className={s.message__content}>
             <strong>
-                <span className={style.message__content__author}>{props.message.author}</span><br />
-                    {/* message number: {props.number}<br /> */}
-                    {props.message.text}
+                <span className={s.message__content__author}>{author}</span><br />
+                    {content}
             </strong>
         </div>
-    </div>
+        </div>
     )
-    }
+}
+    MessageItemRender.propTypes = {
+    messages: propTypes.arrayOf(propTypes.shape({
+        id: propTypes.string,
+        chatId: propTypes.string,
+        content: propTypes.string,
+        author: propTypes.string,
+    }))
 
-    MessageItem.propTypes = {
-        message: shape ({
-            id: number.isRequired,
-            text: string.isRequired,
-            author: string.isRequired
-        }).isRequired,
-    }
+}
+
+
+export const MessageItem = messagesConnect(MessageItemRender)
