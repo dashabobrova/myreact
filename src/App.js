@@ -4,13 +4,13 @@ import { Switch, Route } from 'react-router-dom';
 import { Profile } from './pages/Profile/Profile';
 import { ChatPage } from './pages/ChatPage/ChatPage';
 import { Provider } from 'react-redux';
-import { store } from './store/store'
+import { store } from './store/store';
 
 const App = () => {
 
   return (
-<Provider store={store}>
-
+  <Provider store={store}>
+    <>
     <Switch>
       <Route path='/chatpage'>
           <ChatPage/>
@@ -29,8 +29,8 @@ const App = () => {
         </Route>
         
   </Switch> 
-
-</Provider> 
+</>
+</Provider>
   );
 }
 
