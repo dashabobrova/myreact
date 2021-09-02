@@ -1,0 +1,458 @@
+//крестик
+.close {
+    position: relative;
+    float: right;
+    right: 28px;
+    top: 22px;
+    width: 9px;
+    height: 9px;
+    opacity: 0.3;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:focus, .close:active {
+    opacity: 0.3;
+}
+
+.close:before, .close:after {
+    position: absolute;
+    left: 8px;
+    content: ' ';
+    height: 18px;
+    width: 2px;
+    background-color: #333;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
+//крестик
+
+.cart__pinkbox {
+    height: 148px;
+    background-color: #F8F3F4;
+}
+
+.cart__pinkbox-title {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    color: #F16D7F;
+    text-transform: uppercase;
+    padding-top: 59px;
+}
+
+.cart__mainbox {
+    height: 998px;
+}
+.cart__mainbox-carts {
+    height: 773px;
+    width: 652px;
+    position: absolute;
+    float: left;
+    margin-top: 96px;
+}
+
+.cart__mainbox-form {
+    height: 557px;
+    width: 359px;
+    float: right;
+    margin-top: 113px;
+    position: relative;
+}
+
+.mainbox_carts-cap{
+    width: 100%;
+    height: 306px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.mainbox_carts-blackmen{
+    display: block;
+    width: 100%;
+    height: 306px;
+    margin-top: 40px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.mainbox__carts-img {
+    position: absolute;
+}
+
+.mainbox__carts-inf {
+    width: 200px;
+    float: right;
+    padding-right: 140px;
+    padding-top: 22px;
+}
+
+.mainbox__carts-h1 {
+    color: #222222;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 29px;
+    padding-bottom: 42px;
+}
+
+.mainbox__carts-text {
+    padding-top: 10px;
+    color: #222222;
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.text-quantity{
+    position: absolute;
+}
+
+.quantity {
+    width: 43px;
+    height: 24px;
+    border: 1px solid #A4A4A4;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 121px;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+
+.carts_button-clear {
+    height: 50px;
+    width: 235px;
+    border: 1px solid #A4A4A4;
+    background-color: transparent;
+
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 17px;
+    color: #000000;
+    float: left;
+    position: absolute;
+    margin-top: 72px;
+}
+
+.carts_button-continue {
+    height: 50px;
+    width: 235px;
+    border: 1px solid #A4A4A4;
+    background-color: transparent;
+
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 17px;
+    color: #000000;
+    float: right;
+    position: relative;
+    margin-top: 72px;
+}
+
+.carts_button-continue:hover , .carts_button-clear:hover {
+    background-color: #F5F3F3;
+}
+
+.carts_button-continue:active , .carts_button-clear:active {
+    outline: 1px solid #F16D7F;
+    border: none;
+}
+
+.cart__button-position {
+    width: 100%;
+}
+
+.cart__form-input {
+    width: 339px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #B1B1B1;
+    padding-left: 17px;
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 16px;
+}
+
+.cart__form-input::placeholder {
+    color: #222222;
+}
+
+.cart__form-input-Bang::placeholder {
+    color: #B1B1B1;
+}
+
+.mainbox__form-button {
+    height: 34px;
+    width: 100px;
+    border: none;
+    border: 1px solid #A4A4A4;
+    color: #4A4A4A;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 13px;
+    text-align: center;
+    margin-top: 23px;
+}
+
+.mainbox__form-button:hover {
+    background-color: #F5F3F3;
+}
+
+.mainbox__form-button:active {
+    outline: 1px solid #F16D7F;
+    border: none;
+
+}
+
+.cart__form-h1 {
+    color: #222222;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+}
+
+.mainbox__form-main {
+    width:100%;
+    height: 290px;
+    float: left;
+}
+
+.cart__form-salesreceipt {
+    height: 214px;
+    width: 360px;
+    background-color: #F5F3F3 ;
+    border: none;
+    margin-top: 57px;
+    position: relative;
+    float: left;
+}
+
+.form_salesreceipt-h3 {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;  
+    text-transform: uppercase;  
+    color: #222222;
+    text-align: right;
+    padding-top: 39px;
+}
+
+.form_salesreceipt-h3 span { 
+    padding-left: 20px;
+}
+
+.form_salesreceipt-h1 {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+    text-transform: uppercase;  
+    color: #222222;
+    text-align: right;
+    padding-top: 12px;
+}
+
+.form_salesreceipt-h1 span {
+    color: #F16D7F;
+}
+
+.salesreceipt-container {
+    width: 237px;
+    margin: 0 auto;
+}
+
+.form_salesreceipt-band {
+    width: 100%;
+    height: 1px;
+    background-color: #E2E2E2;
+    margin-top: 21px;
+}
+
+.form_salesreceipt-button {
+    height: 50px;
+    width: 100%;
+    background-color: #F16D7F;
+    border: none;
+    margin-top: 17px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19px;
+}
+
+.form_salesreceipt-button:hover {
+    font-size: 15px;
+}
+
+.form_salesreceipt-button:active {
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 1599px) {
+    .cart__mainbox {
+        height: 1287px;
+    }
+
+    .cart__mainbox-carts {
+        width: 736px;
+        position: relative;
+        float: left;
+        margin-top: 59px;
+    }
+
+    .cart__mainbox-form {
+        height: 272px;
+        width: 734px;
+        float: left;
+        margin-top: 64px;
+    }
+
+    .mainbox__carts-inf {
+        padding-right: 240px;
+        padding-top: 22px;
+    }
+
+    .cart__button-position {
+        width: 517px;
+        margin: 0 auto;
+    }
+
+    .mainbox__form-main {
+        width:360px;
+        height: 272px;
+    }
+    
+    .cart__form-salesreceipt {
+        margin-top: 39px;
+        float: right;
+    }    
+
+}
+
+@media (max-width: 767px){
+    .cart__mainbox {
+        height: 1188px;
+    }
+    .cart__mainbox-carts {
+        height: 471px;
+        width: 357px;
+        margin-top: 39px;
+    }
+    
+    .mainbox__carts-img{
+        width: 144px;
+        height: 188px;
+    }
+
+    .cart__mainbox-form {
+        height: 543px;
+        width: 359px;
+        background-color: yellowgreen;
+        float: right;
+        margin-top: 113px;
+        position: relative;
+    }
+
+    .mainbox_carts-cap, .mainbox_carts-blackmen{
+        height: 188px;
+    }
+
+    .close {
+        right: 17px;
+        top: 12px;
+        width: 5px;
+        height: 5px;
+    }
+
+    .close:before, .close:after {
+        position: absolute;
+        left: 8px;
+        content: ' ';
+        height: 10px;
+        width: 2px;
+        background-color: #333;
+    }
+
+    .close-position{
+        margin-top: -45px;
+    }
+
+    .mainbox_carts-blackmen{
+        margin-top: 32px;
+    }
+
+    .mainbox__carts-inf {
+        width: 140px;
+        padding-right: 53px;
+        padding-top: 14px;
+    }
+    
+    .mainbox__carts-h1 {
+        font-size: 16px;
+        line-height: 19px;
+        padding-bottom: 23px;
+    }
+    
+    .mainbox__carts-text {
+        padding-top: 5px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    
+    .quantity {
+        width: 24px;
+        height: 15px;
+        margin-top: 7px;
+        margin-left: 105px;
+    
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .cart__button-position {
+        width: 100%;
+    }
+
+    .carts_button-clear, .carts_button-continue {
+    height: 33px;
+    width: 175px;
+
+    text-transform: none;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 30px;
+    }
+
+    .cart__mainbox-form {
+        height: 534px;
+        width: 360px;
+        margin-top: 48px;
+    } 
+    
+    .cart__form-salesreceipt {
+        margin-top: 50px;
+        float: left;
+    }
+    
+    .mainbox__form-main {
+        height: 290px;
+    }
+}

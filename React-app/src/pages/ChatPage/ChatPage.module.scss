@@ -1,0 +1,22 @@
+.chatpage_container{
+    width: 1200px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.chatpage_container_left{
+    background-color: rgb(194, 94, 119);
+    height: 100%;
+    width:400px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.chatpage_container_right{
+    background-color: rgb(162, 162, 162);
+    width: 800px;
+    height: 100%;
+    padding-left: 20px;
+    padding-top: 20px;
+}
