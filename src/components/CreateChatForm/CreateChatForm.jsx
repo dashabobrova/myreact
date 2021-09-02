@@ -1,6 +1,4 @@
 import React from "react";
-import { chatsConnect } from "../../connects/chats/chatsConnect";
-import { useSimpleForm } from "../../hooks/useSimpleForm/useSimpleForm";
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,31 +19,18 @@ const useStyles = makeStyles((theme) => ({
 // addChats - в коннекторе
 /* добавляется Render, чтобы отметить, что это чистый компонент без хоков. 
 Дальше Render передается в Connect и сохраняю в ChatList, который дальше будет использоваться в приложении */
-export const CreateChatFormRender = ({addChats}) => {
+
+export const CreateChatForm = ({value, onSubmit, onChange}) => {
   const classes = useStyles();
-  const {setFieldValue, getFieldValue, resetForm} = useSimpleForm({});
-  // useSimpleForm - кастомный хук с логикой работы формы
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const chat = {
-      id: Date.now().toString(),
-      title: getFieldValue('title')
-    };
-    addChats(chat); // сформировала объект, передала в addChats (в коннекте)
-    resetForm();
-  }
-
+  
   return (
-    <form onSubmit={handleSubmit} noValidate autoComplete="off">
+    <form onSubmit={onSubmit} noValidate autoComplete="off">
       <TextField
         style = {{width: 200}}
         id="filled-secondary" //свойство material-ui
         name='title'
-        value={getFieldValue('title')}
-        onChange={(event) => {
-          setFieldValue('title', event.target.value);
-        }}
+        value={value.text}
+        onChange={onChange}
         label="Chat" 
       />
 
@@ -64,4 +49,3 @@ export const CreateChatFormRender = ({addChats}) => {
     values - это стейт формы */
 }
 
-export const CreateChatForm = chatsConnect(CreateChatFormRender);
