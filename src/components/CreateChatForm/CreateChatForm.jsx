@@ -16,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// addChats - в коннекторе
-/* добавляется Render, чтобы отметить, что это чистый компонент без хоков. 
-Дальше Render передается в Connect и сохраняю в ChatList, который дальше будет использоваться в приложении */
-
 export const CreateChatForm = ({value, onSubmit, onChange}) => {
   const classes = useStyles();
   
@@ -44,8 +40,5 @@ export const CreateChatForm = ({value, onSubmit, onChange}) => {
       >Add +</Button>
     </form>
   )
-/*  getFieldValue - это функция, в качестве единственного аргумента она принимает имя свойства в объекте, и возвращает данные из этого поля. 
-    В хуке useSimpleForm есть определение этой функции: const getFieldValue = (name) => values[name] || '';
-    values - это стейт формы */
 }
 
