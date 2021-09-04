@@ -7,6 +7,7 @@ export const HomePage = (props) => {
             <ul>
                 <li><Link to='/chatpage'>chats</Link></li>
                 <li><Link to='/profile'>profile</Link></li>
+                <li><Link to='/posts'>posts</Link></li>
             </ul>
            
         </div>

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './store/store'
 import { PersistGate } from 'redux-persist/integration/react';
 import { CircularProgress } from '@material-ui/core';
+import { Posts } from './pages/Posts/Posts';
 
 const App = () => {
 
@@ -20,6 +21,10 @@ const App = () => {
 
         <Route path='/profile'>
           <Profile/>
+        </Route>
+
+        <Route exact path="/posts">
+          <Posts />
         </Route>
 
         <Route exact path="/">

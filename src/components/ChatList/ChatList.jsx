@@ -30,7 +30,7 @@ export const ChatListRender = ({chats}) => {
 
 ChatListRender.propTypes = {
     chats: propTypes.arrayOf(propTypes.shape({
-        // id: propTypes.number, 
+        id: propTypes.string, 
         title: propTypes.string
     })),
     removeChat: propTypes.func,

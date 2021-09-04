@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CreateMessageForm } from "../../components/CreateMessageForm/CreateMessageForm";
 import { addBotMessageWithThunk } from "../../store/messages";
-
+import { nanoid } from 'nanoid';
 
 export const CreateMessageFormHOC = ({chatId}) => {
 
@@ -14,9 +14,8 @@ export const CreateMessageFormHOC = ({chatId}) => {
     const onSubmit = (e) => {
         e.preventDefault();
         const newMessage = {
-            ...value,
             chatId,
-            id: Date.now().toString(),
+            id: nanoid().toString(),
             content: value.text,
             author: userName
         }

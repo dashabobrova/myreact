@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CreateChatForm } from "../../components/CreateChatForm/CreateChatForm.jsx";
 import { useDispatch } from "react-redux";
 import { createAddChat } from "../../store/chats/chatsActions";
+import { nanoid } from 'nanoid';
 
 // компонент высшего порядка возвращает компонент
 export const CreateChatFormHOC= () => {
@@ -13,8 +14,7 @@ export const CreateChatFormHOC= () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const newChat = {
-      ...value,
-      id: Date.now().toString(),
+      id: nanoid().toString(),
       title: value.text
     }
     dispatch(createAddChat(newChat)) // вызов напрямую action'a - без коннектора

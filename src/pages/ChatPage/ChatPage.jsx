@@ -21,7 +21,7 @@ export const ChatPage = (props) => {
       <div className={s.chatpage_container}>
         <div className={s.chatpage_container_left}>
           <CreateChatFormHOC />
-          <ChatList list={[{ id: '1', title: '1' }]} />
+          <ChatList />
         </div>
 
         <div className={s.chatpage_container_right}>

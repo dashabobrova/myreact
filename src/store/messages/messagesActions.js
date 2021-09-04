@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid';
+
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 
 /**
@@ -20,10 +22,10 @@ export const addBotMessageWithThunk = (chatId, message) => async (dispatch) => {
             if (message.author !== botName) {
                 const botMessage = {
                     chatId,
-                    id: Date.now().toString(),
+                    id: nanoid().toString(),
                     content: 'сообщение от бота',
                     author: botName
                 };
-                setTimeout(() => dispatch(createAddMessage(botMessage)), 1000);
+                setTimeout(() => dispatch(createAddMessage(botMessage)), 2000);
             }
 }
