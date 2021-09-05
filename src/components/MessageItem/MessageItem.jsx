@@ -19,14 +19,13 @@ export const MessageItemRender = ({content, author}) => {
     )
 }
     MessageItemRender.propTypes = {
-    messages: propTypes.arrayOf(propTypes.shape({
-        id: propTypes.string,
-        chatId: propTypes.string,
-        content: propTypes.string,
-        author: propTypes.string,
-    }))
-
-}
+        messages: propTypes.arrayOf(propTypes.shape({
+            id: propTypes.string,
+            chatId: propTypes.string,
+            content: propTypes.string,
+            author: propTypes.string,
+        }))
+    }
 
 
 export const MessageItem = messagesConnect(MessageItemRender)

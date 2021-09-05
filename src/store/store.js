@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import {compose, applyMiddleware} from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localStorage
+import { commentsReducer } from './comments';
+import { postsReducer } from './posts/postsReducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,7 +19,9 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     chats: chatsReducer,
-    messages: messageReducer
+    messages: messageReducer,
+    comments: commentsReducer,
+    posts: postsReducer,
 })
 
 // оборачиваем редьюсеры в persist

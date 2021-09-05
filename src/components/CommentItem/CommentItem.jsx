@@ -1,5 +1,5 @@
 import React from 'react';
-
+import propTypes from 'prop-types';
 
 export const CommentItem = ({postId, id, name, email, body}) => {
   return (
@@ -8,6 +8,17 @@ export const CommentItem = ({postId, id, name, email, body}) => {
       <h4>{name}</h4>
       <h5>{email}</h5>
       <p>{body}</p>
+      <br />
     </div>
   );
 };
+
+CommentItem.propTypes = {
+  messages: propTypes.arrayOf(propTypes.shape({
+      postId: propTypes.string,
+      id: propTypes.string,
+      name: propTypes.string,
+      email: propTypes.string,
+      body: propTypes.string,
+  }))
+}

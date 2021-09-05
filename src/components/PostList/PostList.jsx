@@ -1,6 +1,6 @@
 import React from 'react';
 import { PostItem } from '../PostItem/PostItem';
-
+import propTypes from 'prop-types';
 
 export const PostList = ({posts}) => {
   return (
@@ -9,3 +9,9 @@ export const PostList = ({posts}) => {
     </div>
   );
 };
+
+PostList.propTypes = {
+  posts: propTypes.arrayOf(propTypes.shape({
+      id: propTypes.number
+  }))
+}

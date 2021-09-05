@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import propTypes from 'prop-types';
 
 export const PostItem = ({userId, id, title, body}) => {
     
@@ -12,9 +13,15 @@ export const PostItem = ({userId, id, title, body}) => {
         open comments
       </Link>
       <br/>
-{/*       <Link to={`/post/${id}`}>
-        open post
-      </Link> */}
     </div>
   );
 };
+
+PostItem.propTypes = {
+  messages: propTypes.arrayOf(propTypes.shape({
+      userId: propTypes.string,
+      id: propTypes.string,
+      title: propTypes.string,
+      body: propTypes.string,
+  }))
+}
