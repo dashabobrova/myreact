@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CreateChatForm } from "../../components/CreateChatForm/CreateChatForm.jsx";
+import { CreateChatForm } from "../../components/CreateChatForm/CreateChatForm";
 import { useDispatch } from "react-redux";
 import { createAddChat } from "../../store/chats/chatsActions";
 import { nanoid } from 'nanoid';

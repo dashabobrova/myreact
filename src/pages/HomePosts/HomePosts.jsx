@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { PostList } from "../../components/PostList/PostList";
 import s from './HomePosts.module.scss'
 import {useDispatch, useSelector} from 'react-redux';
-import { postsSelectors } from "../../store/posts";
-import { getPostsAction } from "../../store/posts";
+import { postsSelectors, getPostsAction } from "../../store/posts";
 
 export const HomePosts = (props) => {
     const dispatch = useDispatch()

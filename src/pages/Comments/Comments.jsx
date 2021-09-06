@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { CommentList } from "../../components/CommentList/CommentList";
-import {useDispatch, useSelector} from 'react-redux';
-import { commentsSelectors } from '../../store/comments/commentsSelectors.js';
-import { getCommentsAction } from '../../store/comments/commentsActions.js'
+import { useDispatch, useSelector } from 'react-redux';
+import { getCommentsAction, commentsSelectors } from '../../store/comments'
 
 export const Comments = () => {
 const {postId} = useParams();

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { chatsConnect } from "../../connects/chats/chatsConnect";
-/* import {shape, string, number} from 'prop-types'; - включено в import propTypes from 'prop-types', начиная с react 15.5 */
 import propTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 import { createRemoveChat } from "../../store/chats";

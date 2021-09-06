@@ -1,6 +1,5 @@
 import { Redirect, useParams } from "react-router-dom";
 import { MessageList } from "../../components/MessageList/MessageList";
-
 import { CreateMessageFormHOC } from "../../containers/CreateMessageFormHOC/CreateMessageFormHOC";
 
 export const Chat = (props) => {

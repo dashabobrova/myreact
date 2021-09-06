@@ -1,4 +1,4 @@
-import { ENDPOINTS, ENDPOINT } from '../../api/endpoints';
+import { ENDPOINTS, ENDPOINT } from '../../api';
 
 
 export const CHANGE_COMMENTS_LOADING = 'CHANGE_COMMENTS_LOADING';

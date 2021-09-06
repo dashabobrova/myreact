@@ -1,4 +1,4 @@
-import { ENDPOINT, ENDPOINTS } from '../../api/endpoints';
+import { ENDPOINT, ENDPOINTS } from '../../api';
 
 export const CHANGE_POSTS_LOADING = 'CHANGE_POSTS_LOADING';
 
