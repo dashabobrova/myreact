@@ -8,4 +8,6 @@ const mapStateToProps = (state, {chatId}) => ({ // state - аргумент, в 
 
 export const messagesConnect = connect(mapStateToProps);
 
+
+
 // к коннектору подключаетмя форма создания сообщения, список сообщений и элемент списка сообщений

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CreateMessageForm } from "../../components/CreateMessageForm/CreateMessageForm";
-import { addBotMessageWithThunk } from "../../store/messages";
 import { nanoid } from 'nanoid';
+import { createAddMessage } from "../../store/messages";
 
 export const CreateMessageFormHOC = ({chatId}) => {
 
@@ -20,7 +20,7 @@ export const CreateMessageFormHOC = ({chatId}) => {
             author: userName
         }
 
-        dispatch(addBotMessageWithThunk(chatId, newMessage))
+        dispatch(createAddMessage(newMessage))
         setValue({ text: '' })
     };
 
