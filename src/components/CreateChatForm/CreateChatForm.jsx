@@ -14,6 +14,7 @@ export const CreateChatForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setTitle('');
 
     try {
       await chatsApi.create(title)

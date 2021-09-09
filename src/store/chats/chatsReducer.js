@@ -1,4 +1,4 @@
-import { ADD_CHAT/* , REMOVE_CHAT */ } from "./chatsActions"
+import { ADD_CHAT, ADD_CHATS/* , REMOVE_CHAT */ } from "./chatsActions"
 
 const initialState = {
     chats: []
@@ -18,6 +18,12 @@ export const chatsReducer = (state = initialState, action) => {
                     ...state.chats, // копия старого списка
                     action.payLoad, // добавление нового чата в список
                 ],
+            }
+        }
+
+        case ADD_CHATS: {
+            return {
+                chats: action.payLoad
             }
         }
 

@@ -11,20 +11,27 @@ export const chatsApi = {
                 ...snapshot.val(),
             }))
     },
-    update: (id, title) => {
+    /* update: (id, title) => {
         return db.ref('chats').child(id).set({
             title
         })
-    },
+    }, */
     delete: (id) => db.ref('chats').child(id).remove(),
     getList: (callback) => {
         db
             .ref('chats')
-            .on('child_changed', (snapshot) => callback({
-                id: snapshot.key,
-                ...snapshot.val(),
-            }))
-
+            .on('value', (snapshot) => {
+                const posts = []
+                snapshot.forEach((snap) => {
+                    posts.push({
+                        id: snap.key,
+                        ...snap.val(),
+                    })
+                })
+                callback(posts)
+        })
+    },
+    getAdded: (callback) => {
         db
             .ref('chats')
             .on('child_added', (snapshot) => callback({

@@ -8,34 +8,45 @@ import { Posts } from './pages/Posts/Posts';
 import { SignUp } from './pages/SignUp/SignUp';
 import { LogIn } from './pages/logIn/logIn';
 import { useDispatch} from 'react-redux';
-import { useEffect } from 'react';
-import { initAuthAction } from './store/user';
+import { useEffect, useRef } from 'react';
+import { getIsAuth, initAuthAction } from './store/user';
 import { initChatsTracking } from './store/chats';
+import { useSelector } from 'react-redux';
+import { PrivateRoute } from './hocs/PrivateRoute/PrivateRoute';
 
 const App = () => {
+  const isAuth = useSelector(getIsAuth);
+  const prevIsAuth = useRef(isAuth);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initChatsTracking);
     dispatch(initAuthAction);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    console.log (isAuth, prevIsAuth.current)
+    if (isAuth !== prevIsAuth.current) {
+      dispatch(initChatsTracking);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuth])
+
 
   return (
       <Switch>
-        <Route path='/chatpage'>
+        <PrivateRoute auth={isAuth} path='/chatpage'>
           <ChatPage/>
-        </Route>
+        </PrivateRoute>
 
-        <Route path='/profile'>
+        <PrivateRoute auth={isAuth} path='/profile'>
           <Profile/>
-        </Route>
+        </PrivateRoute>
 
-        <Route path="/posts">
+        <PrivateRoute auth={isAuth} path="/posts">
           <Posts />
-        </Route>
+        </PrivateRoute>
 
         <Route exact path="/signUp">
           <SignUp />

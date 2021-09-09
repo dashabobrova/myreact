@@ -1,25 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import propTypes from 'prop-types';
-import { /* useDispatch,  */useSelector } from 'react-redux';
-/* import { createRemoveChat } from "../../store/chats"; */
+import { useSelector } from 'react-redux';
 import { chatsSelectors } from "../../store/chats";
+import { chatsApi } from "../../api/request/chats";
 
 export const ChatList = () => {
     
-    /* const dispatch = useDispatch() */
     const chats = useSelector(chatsSelectors.getChats);
     
     return (
         <div>
             {
                 chats.map(({title,id}) => <Link to={`/chatpage/${id}`} key={id}>
-                        <div>{title}</div>
-{/*                         <button onClick={(event) => {
-                            event.preventDefault();
+                        {title}
+                        <button onClick = {(event) => {
                             event.stopPropagation();
-                            dispatch(createRemoveChat(id))
-                        }}>x</button>      */}  
+                            event.preventDefault();
+                            chatsApi.delete(id);
+                        }}>х</button><br />
                     </Link>
                 )
             }
