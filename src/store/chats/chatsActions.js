@@ -20,7 +20,6 @@ export const createAddChat = (chat) => ({
 })
 
 export const initChatsTracking = (dispatch) => {
-
     chatsApi.getList((chat) => {
         dispatch(createAddChat(chat))
     })

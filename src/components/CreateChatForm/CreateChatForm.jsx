@@ -1,25 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from '@material-ui/core/styles';
+import { nanoid } from 'nanoid';
+import { useDispatch } from "react-redux";
+import { createAddChat } from '../../store/chats/chatsActions.js'
+import { useHistory, useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { chatsApi } from "../../api/request/chats.js";
+import { chatsSelectors } from "../../store/chats/chatsSelectors.js";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    background: 'grey',
-    borderRadius: 3,
-    border: 0,
-    color: 'white',
-    padding: '0 0px',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    margin: theme.spacing(1),
-    width: '5ch',
-  },
-}));
+export const CreateChatForm = () => {
+  const {push} = useHistory();
+  const {chatId} = useParams();
 
-export const CreateChatForm = ({value, onSubmit, onChange}) => {
-  const classes = useStyles();
+  const [isUpdate] = useState(!!chatId);
+  const [title, setTitle] = useState("");
+  const [error, setError] = useState("");
+
+  const chat = useSelector(chatsSelectors.getChatById(chatId));
+
+  useEffect(() => {
+    if(chatId && chat) {
+      setTitle(chat.title)
+    } 
+  }, [])
+
+  const handleEmailChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+
+      if (chatId) {
+        await chatsApi.update(chatId, title)
+      } else {
+        await chatsApi.create(title)
+      }
+      push('/chatpage')
+
+    } catch (e){
+      setError(e);
+    }
+
+  };
   
   return (
+<div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            placeholder="title"
+            name="title"
+            type="title"
+            onChange={handleEmailChange}
+            value={title}
+          />
+        </div>
+        <div>
+          {error && <p>{error.toString()}</p>}
+          <button type="submit">
+            {
+              isUpdate && <>update</>
+            }
+            {
+              !isUpdate && <>create</>
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+
+/* 
     <form onSubmit={onSubmit} noValidate autoComplete="off">
       <TextField
         style = {{width: 200}}
@@ -31,14 +85,12 @@ export const CreateChatForm = ({value, onSubmit, onChange}) => {
       />
 
       <Button 
-        classes={{root: classes.root}}
         variant="contained"
         color="primary"
-        className={classes.button}
         size="small"
         type="submit" 
       >Add +</Button>
-    </form>
+    </form> */
   )
 }
 

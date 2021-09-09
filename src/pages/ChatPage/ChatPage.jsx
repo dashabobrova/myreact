@@ -4,8 +4,9 @@ import { ChatList } from "../../components/ChatList/ChatList";
 import { Route } from "react-router";
 import { Chat } from "../Chat/Chat";
 import s from './ChatPage.module.scss';
+import { CreateChatForm } from '../../components/CreateChatForm/CreateChatForm'
 
-import { CreateChatFormHOC } from "../../containers/CreateChatFormHOC/CreateChatFormHOC.jsx";
+/* import { CreateChatFormHOC } from "../../containers/CreateChatFormHOC/CreateChatFormHOC.jsx"; */
 
 export const ChatPage = (props) => {
   const theme = createTheme({ //тема material UI
@@ -20,7 +21,7 @@ export const ChatPage = (props) => {
     <ThemeProvider theme={theme}>
       <div className={s.chatpage_container}>
         <div className={s.chatpage_container_left}>
-          <CreateChatFormHOC />
+          <CreateChatForm />
           <ChatList />
         </div>
 

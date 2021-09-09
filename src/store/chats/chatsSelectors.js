@@ -8,6 +8,8 @@ const getChats = (state) => state.chats.chats || [];
         }
  */
 
+const getChatById = (id) => (state) => state.chats.chats.find((chat) => chat.id === id);
 export const chatsSelectors = { // группировка селекторов в 1 объект
-    getChats
+    getChats,
+    getChatById
 }
