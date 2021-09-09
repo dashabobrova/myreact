@@ -1,5 +1,5 @@
 import { db } from "../firebase";
-// тут все ок
+
 export const messagesApi = {
     
     create: (content, chatId) => {
@@ -37,6 +37,7 @@ export const messagesApi = {
             ...snapshot.val(),
     })) */
 }
+
 /* 
     var db = {
         messages: {

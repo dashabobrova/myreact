@@ -22,7 +22,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initMessagesTracking);
+   
     dispatch(initAuthAction);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -30,6 +30,7 @@ const App = () => {
   useEffect(() => {
     if (isAuth !== prevIsAuth.current) {
       dispatch(initChatsTracking);
+      dispatch(initMessagesTracking);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth])
