@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
+import { nanoid } from 'nanoid';
+import { createAddMessage } from "../../store/messages";
+import { useParams } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +21,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const CreateMessageForm = ({chatId, value, onSubmit, onChange}) => {
+export const CreateMessageForm = () => {
+  let {chatId} = useParams();
   const classes = useStyles();
+  const dispatch = useDispatch()
+  const [value, setValue] = useState({ text: '' });
 
+  const userName = 'me';
+
+  const onSubmit = (e) => {
+      e.preventDefault();
+      const newMessage = {
+          chatId,
+          id: nanoid().toString(),
+          content: value.text,
+          author: userName
+      }
+
+      dispatch(createAddMessage(newMessage))
+      setValue({ text: '' })
+  };
+
+  const onChange = (e) => {
+      setValue({ ...value, text: e.target.value });
+  }
   return (
     <form onSubmit={onSubmit}  noValidate autoComplete="off">
       <TextField

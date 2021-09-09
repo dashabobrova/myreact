@@ -1,6 +1,6 @@
 import { Redirect, useParams } from "react-router-dom";
+import { CreateMessageForm } from "../../components/CreateMessageForm/CreateMessageForm";
 import { MessageList } from "../../components/MessageList/MessageList";
-import { CreateMessageFormHOC } from "../../containers/CreateMessageFormHOC/CreateMessageFormHOC";
 
 export const Chat = (props) => {
     const {chatId} = useParams(); // id из url
@@ -11,7 +11,7 @@ export const Chat = (props) => {
 
     return (
         <div>
-            <CreateMessageFormHOC chatId={chatId}/> 
+            <CreateMessageForm chatId={chatId}/> 
             <MessageList chatId={chatId}/>
         </div>
     )
