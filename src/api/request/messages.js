@@ -1,19 +1,18 @@
 import { db } from "../firebase";
-
+// тут все ок
 export const messagesApi = {
-    create: (content) => {
-        return db.ref('messages').push({
-            content
-        })
+    
+    create: (content, chatId) => {
+        return db.ref('messages').child(chatId).push(content)
             .then((ref) => ref.get())
             .then((snapshot) => ({
                 id: snapshot.key,
                 ...snapshot.val(),
             }))
     },
-    getList: (callback) => {
+    getList: (callback, chatId) => {
         db
-            .ref('messages')
+            .ref('messages').child(chatId)
             .on('value', (snapshot) => {
                 const messages = []
                 snapshot.forEach((snap) => {
@@ -25,9 +24,9 @@ export const messagesApi = {
                 callback(messages)
         })
     },
-    getAdded: (callback) => {
+    getAdded: (callback, chatId) => {
         db
-            .ref('messages')
+            .ref('messages').child(chatId)
             .on('child_added', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
