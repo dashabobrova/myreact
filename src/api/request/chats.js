@@ -17,7 +17,7 @@ export const chatsApi = {
         })
     },
     delete: (id) => db.ref('chats').child(id).remove(),
-    getList: (callback) =>  {
+    getList: (callback) => {
         db
             .ref('chats')
             .on('child_changed', (snapshot) => callback({
