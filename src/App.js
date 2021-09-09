@@ -14,8 +14,10 @@ import { initChatsTracking } from './store/chats';
 import { useSelector } from 'react-redux';
 import { PrivateRoute } from './hocs/PrivateRoute/PrivateRoute';
 import { initMessagesTracking } from './store/messages';
+import { useParams } from 'react-router';
 
 const App = () => {
+  const {chatId} = useParams();
   const isAuth = useSelector(getIsAuth);
   const prevIsAuth = useRef(isAuth);
 
@@ -29,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     if (isAuth !== prevIsAuth.current) {
-      dispatch(initChatsTracking);
+      dispatch(initChatsTracking(chatId));
       dispatch(initMessagesTracking);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
