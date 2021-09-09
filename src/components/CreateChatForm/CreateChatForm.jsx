@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from '@material-ui/core/Button';
-import TextField from "@material-ui/core/TextField";
-import { nanoid } from 'nanoid';
-import { useDispatch } from "react-redux";
-import { createAddChat } from '../../store/chats/chatsActions.js'
 import { useHistory, useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { chatsApi } from "../../api/request/chats.js";

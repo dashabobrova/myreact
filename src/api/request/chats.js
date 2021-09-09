@@ -6,9 +6,9 @@ export const chatsApi = {
             title
         })
             .then((ref) => ref.get())
-            .then((snap) => ({
-                id: snap.key,
-                ...snap.val(),
+            .then((snapshot) => ({
+                id: snapshot.key,
+                ...snapshot.val(),
             }))
     },
     update: (id, title) => {
@@ -17,10 +17,19 @@ export const chatsApi = {
         })
     },
     delete: (id) => db.ref('chats').child(id).remove(),
-    getList: (callback) => db
-        .ref('chats')
-        .on('child_changed', (snapshot) => callback({
-            id: snapshot.key,
-            ...snapshot.val(),
-        })),
+    getList: (callback) =>  {
+        db
+            .ref('chats')
+            .on('child_changed', (snapshot) => callback({
+                id: snapshot.key,
+                ...snapshot.val(),
+            }))
+
+        db
+            .ref('chats')
+            .on('child_added', (snapshot) => callback({
+                id: snapshot.key,
+                ...snapshot.val(),
+            }))
+    }
 }
