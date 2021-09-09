@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import propTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { createRemoveChat } from "../../store/chats";
+import { /* useDispatch,  */useSelector } from 'react-redux';
+/* import { createRemoveChat } from "../../store/chats"; */
 import { chatsSelectors } from "../../store/chats";
 
 export const ChatList = () => {
     
-    const dispatch = useDispatch()
+    /* const dispatch = useDispatch() */
     const chats = useSelector(chatsSelectors.getChats);
     
     return (
@@ -15,11 +15,11 @@ export const ChatList = () => {
             {
                 chats.map(({title,id}) => <Link to={`/chatpage/${id}`} key={id}>
                         <div>{title}</div>
-                        <button onClick={(event) => {
+{/*                         <button onClick={(event) => {
                             event.preventDefault();
                             event.stopPropagation();
                             dispatch(createRemoveChat(id))
-                        }}>x</button>       
+                        }}>x</button>      */}  
                     </Link>
                 )
             }

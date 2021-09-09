@@ -6,6 +6,7 @@ import { chatsReducer } from './chats';
 import { messageReducer } from './messages';
 import { commentsReducer } from './comments';
 import { postsReducer } from './posts'
+import { userReducer } from './user';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,6 +17,7 @@ export const store = createStore(
     messages: messageReducer,
     comments: commentsReducer,
     posts: postsReducer,
+    user: userReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

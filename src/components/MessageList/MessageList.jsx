@@ -2,20 +2,19 @@ import React from "react";
 import propTypes from 'prop-types';
 import { useSelector } from "react-redux";
 import { messagesSelectors } from "../../store/messages";
+import { useParams } from "react-router";
 
 export const MessageList = () => {
-   
-
-const messages = useSelector(messagesSelectors.getMessage)
-
+let {chatId} = useParams();
+const messages = useSelector(state => messagesSelectors.getMessage(state, chatId));
 
     return (
         <div>
             {
                 messages?.map (({content, id, author}) => 
-                <div >
+                <div key={id}>
                         {author}:{content}
-                </div>
+                </div >
                 )
             }
         </div>

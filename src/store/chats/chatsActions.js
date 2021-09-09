@@ -1,6 +1,13 @@
+import { chatsApi } from "../../api/request/chats";
+
 export const ADD_CHAT = 'ADD_CHAT';
 
-export const REMOVE_CHAT = 'REMOVE_CHAT'
+/* export const REMOVE_CHAT = 'REMOVE_CHAT' */
+
+/* export const createRemoveChat = (chatId) => ({
+    type: REMOVE_CHAT,
+    payLoad: chatId
+}) */
 
 /** что будет находиться в объекте chat, который я буду передавать (структура данных)
  * @param {object} chat
@@ -12,7 +19,9 @@ export const createAddChat = (chat) => ({
     payLoad: chat // принимаем chat из аргументов ф-и
 })
 
-export const createRemoveChat = (chatId) => ({
-    type: REMOVE_CHAT,
-    payLoad: chatId
-})
+export const initChatsTracking = (dispatch) => {
+
+    chatsApi.getList((chat) => {
+        dispatch(createAddChat(chat))
+    })
+}
