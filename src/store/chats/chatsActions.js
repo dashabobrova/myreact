@@ -30,7 +30,7 @@ export const initChatsTracking = (dispatch) => {
         dispatch(createAddChats(chats))
 
     })
-    chatsApi.getAdded((chat) => {
+/*     chatsApi.getAdded((chat) => {
         dispatch(createAddChat(chat))
-    })
+    }) */
 }
