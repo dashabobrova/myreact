@@ -11,6 +11,7 @@ export const messagesApi = {
             }))
     },
     getList: (callback, chatId) => {
+        debugger;
         db
             .ref('messages').child(chatId)
             .on('value', (snapshot) => {
@@ -25,6 +26,7 @@ export const messagesApi = {
         })
     },
     getAdded: (callback, chatId) => {
+        debugger;
         db
             .ref('messages').child(chatId)
             .on('child_added', (snapshot) => callback({

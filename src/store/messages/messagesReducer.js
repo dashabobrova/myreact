@@ -35,7 +35,7 @@ export const messageReducer = (state = initialState, action) => {
             const {chatId} = action.payLoad; // из payLoad достаю chatId; по нему сообщения привязываются к чату
 
             // проверка: есть ли в списке чат по этому id?
-            if(state.messages.hasOwnProperty(chatId)) { // ДА (т.е. уже добавляли в этой чат сообщения)
+            if(state.messages.hasOwnProperty(chatId)) { // ДА (т.е. уже добавляли в этот чат сообщения)
                     // hasOwnProperty - метод проверяет, есть ли в объекте свойство
                 state.messages[chatId] = [
                     ...state.messages[chatId], // копия чата
