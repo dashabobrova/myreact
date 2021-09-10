@@ -43,25 +43,6 @@ export const CreateChatForm = () => {
         </div>
       </form>
     </div>
-
-/* 
-    <form onSubmit={onSubmit} noValidate autoComplete="off">
-      <TextField
-        style = {{width: 200}}
-        id="filled-secondary" //свойство material-ui
-        name='title'
-        value={value.text}
-        onChange={onChange}
-        label="Chat" 
-      />
-
-      <Button 
-        variant="contained"
-        color="primary"
-        size="small"
-        type="submit" 
-      >Add +</Button>
-    </form> */
   )
 }
 

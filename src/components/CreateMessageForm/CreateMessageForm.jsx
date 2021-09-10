@@ -1,52 +1,49 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import Button from '@material-ui/core/Button';
-import TextField from "@material-ui/core/TextField";
-import Icon from '@material-ui/core/Icon';
-import { nanoid } from 'nanoid';
-import { createAddMessage } from "../../store/messages";
 import { useParams } from "react-router";
+import { useHistory } from "react-router";
+import { messagesApi } from "../../api/request/messages";
 
 export const CreateMessageForm = () => {
   let {chatId} = useParams();
-  const dispatch = useDispatch()
-  const [value, setValue] = useState({ text: '' });
+  const {push} = useHistory();
 
-  const userName = 'me';
+  const [content, setContent] = useState("");
+  const [error, setError] = useState("");
 
-  const onSubmit = (e) => {
-      e.preventDefault();
-      const newMessage = {
-          chatId,
-          id: nanoid().toString(),
-          content: value.text,
-          author: userName
-      }
-
-      dispatch(createAddMessage(newMessage))
-      setValue({ text: '' })
+  const handleEmailChange = (e) => {
+    setContent(e.target.value);
   };
 
-  const onChange = (e) => {
-      setValue({ ...value, text: e.target.value });
-  }
-  return (
-    <form onSubmit={onSubmit}  noValidate autoComplete="off">
-      <TextField
-        style = {{width: 400}}
-        inputRef={input => input && input.focus()} // автофокус при изменении стейта сообщений и при загрузке страницы
-        name='content'
-        value={value.text}
-        onChange={onChange}
-        label="Message" />
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setContent('');
 
-      <Button
-        variant="contained"
-        color="primary"
-        endIcon={<Icon>send</Icon>}
-        size="small"
-      >Send</Button>
-    </form>
+    try {
+      await messagesApi.create(content, chatId)
+      push('/chatpage')
+    } catch (e){
+      setError(e);
+    }
+
+  };
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            placeholder="title"
+            name="title"
+            type="title"
+            onChange={handleEmailChange}
+            value={content}
+          />
+        </div>
+        <div>
+          {error && <p>{error.toString()}</p>}
+          <button type="submit">submit</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
