@@ -14,24 +14,22 @@ import { initChatsTracking } from './store/chats';
 import { useSelector } from 'react-redux';
 import { PrivateRoute } from './hocs/PrivateRoute/PrivateRoute';
 import { initMessagesTracking } from './store/messages';
-import { useParams } from 'react-router';
 
 const App = () => {
-  const {chatId} = useParams();
   const isAuth = useSelector(getIsAuth);
   const prevIsAuth = useRef(isAuth);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-   
     dispatch(initAuthAction);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
+    console.log (isAuth, prevIsAuth.current)
     if (isAuth !== prevIsAuth.current) {
-      dispatch(initChatsTracking(chatId));
+      dispatch(initChatsTracking);
       dispatch(initMessagesTracking);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +46,7 @@ const App = () => {
           <Profile/>
         </PrivateRoute>
 
-        <PrivateRoute auth={isAuth} path="/posts">
+        <PrivateRoute path="/posts">
           <Posts />
         </PrivateRoute>
 
