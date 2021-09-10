@@ -22,7 +22,7 @@ export const CreateMessageForm = () => {
 
     try {
       await messagesApi.create(content, chatId)
-      push('/chatpage')
+      
     } catch (e){
       setError(e);
     }
