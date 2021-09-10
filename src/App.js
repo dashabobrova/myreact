@@ -46,7 +46,7 @@ const App = () => {
           <Profile/>
         </PrivateRoute>
 
-        <PrivateRoute path="/posts">
+        <PrivateRoute auth={isAuth} path="/posts">
           <Posts />
         </PrivateRoute>
 
