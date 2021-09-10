@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
 import { messagesApi } from "../../api/request/messages";
+import { messagesSelectors } from "../../store/messages";
 
 export const CreateMessageForm = () => {
   let {chatId} = useParams();
