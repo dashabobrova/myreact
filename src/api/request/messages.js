@@ -3,7 +3,7 @@ import { db } from "../firebase";
 export const messagesApi = {
     
     create: (content, chatId) => {
-        return db.ref('messages').child(chatId).child('content').push(content)
+        return db.ref('messages').child(chatId).push(content)
             .then((ref) => ref.get())
             .then((snapshot) => ({
                 id: snapshot.key,
@@ -12,7 +12,7 @@ export const messagesApi = {
     },
     getList: (callback, chatId) => {
         db
-            .ref('messages').child(chatId).child('content')
+            .ref('messages').child(chatId)
             .on('value', (snapshot) => {
                 const messages = []
                 snapshot.forEach((snap) => {
@@ -26,7 +26,7 @@ export const messagesApi = {
     },
     getAdded: (callback, chatId) => {
         db
-            .ref('messages').child(chatId).child('content')
+            .ref('messages').child(chatId)
             .on('child_added', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
