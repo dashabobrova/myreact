@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+/* import { connect } from "react-redux";
 import { messagesSelectors } from "../../store/messages";
 
 const mapStateToProps = (state, {chatId}) => ({ // state - аргумент, в котором мы будет получать объект состояния Redux
@@ -7,7 +7,7 @@ const mapStateToProps = (state, {chatId}) => ({ // state - аргумент, в 
 })
 
 export const messagesConnect = connect(mapStateToProps);
-
+ */
 
 
 // к коннектору подключаетмя форма создания сообщения, список сообщений и элемент списка сообщений

@@ -9,9 +9,9 @@ export const ADD_MESSAGE = 'ADD_MESSAGE';
  * @param {string} message.chatId
  * @param {string} message.author
  */
-export const createAddMessage = (message, chatId) => ({
+export const createAddMessage = (message) => ({
     type: ADD_MESSAGE,
-    payLoad: {message, chatId}
+    payLoad: message
 })
 
 // подписка на изменение сотояния в базе данных; вызывается в эффекте App.js
