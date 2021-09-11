@@ -1,7 +1,7 @@
 import { chatsApi } from "../../api/request/chats";
 
 export const ADD_CHAT = 'ADD_CHAT';
-export const ADD_CHATS = 'ADD_CHATS';
+export const ADD_CHATS = 'ADD_CHATS'; // CHANGE_CHATS (срабатывает и на удаление)
 
 /* export const REMOVE_CHAT = 'REMOVE_CHAT' */
 

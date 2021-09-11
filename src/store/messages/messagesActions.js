@@ -9,14 +9,14 @@ export const ADD_MESSAGE = 'ADD_MESSAGE';
  * @param {string} message.chatId
  * @param {string} message.author
  */
-export const createAddMessage = (message) => ({
+export const createAddMessage = (message, chatId) => ({
     type: ADD_MESSAGE,
-    payLoad: message
+    payLoad: {message, chatId}
 })
 
 // подписка на изменение сотояния в базе данных; вызывается в эффекте App.js
-export const initMessagesTracking = () => (dispatch) => {
-    messagesApi.getList((message, chatId) => {
+export const initMessagesTracking = (dispatch) => {
+    messagesApi.getList((message) => {
         dispatch(createAddMessage(message))
     })
 }

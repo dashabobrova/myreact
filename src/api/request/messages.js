@@ -11,16 +11,16 @@ export const messagesApi = {
             }))
     },
 
-    getList: (callback, chatId) => {
+    getList: (callback) => {
         db
-            .ref('messages').child(chatId)
+            .ref('messages')
             .on('child_changed', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
             }))
         
         db
-            .ref('messages').child(chatId)
+            .ref('messages')
             .on('child_added', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
