@@ -14,7 +14,7 @@ export const messagesApi = {
     getList: (callback) => {
         db
             .ref('messages')
-            .on('child_changed', (snapshot) => callback({
+            .on('value', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
             }))
