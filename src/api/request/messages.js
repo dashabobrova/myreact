@@ -19,11 +19,11 @@ export const messagesApi = {
                 ...snapshot.val(),
             }))
         
-        db
+ /*        db
             .ref('messages')
             .on('child_added', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
-            }))
+            })) */
     }
 }
