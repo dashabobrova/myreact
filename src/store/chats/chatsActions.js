@@ -22,7 +22,7 @@ export const createAddChat = (chat) => ({
 
 export const createAddChats = (chats) => ({
     type: ADD_CHATS,
-    payLoad: chats // принимаем chat из аргументов ф-и
+    payLoad: chats // принимаем chats из аргументов ф-и
 })
 
 export const initChatsTracking = (dispatch) => {
