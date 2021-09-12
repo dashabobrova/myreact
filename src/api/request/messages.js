@@ -11,17 +11,15 @@ export const messagesApi = {
             })) */
     },
 
-    getList: (callback) => {
+    getList: (callback, chatId) => {
         db
-            .ref('messages')
+            .ref(`messages`)
             .on('value', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
-            }), 
-            
-            /* console.log(snapshot.key),
-            console.log(snapshot.child(`messages/${id}`).key),
-            console.log(snapshot.val()), */
+            }, console.log(snapshot.key),
+            console.log(snapshot.val()),), 
+            // поможить newMessage в callback ?    
 )
     }
 }
