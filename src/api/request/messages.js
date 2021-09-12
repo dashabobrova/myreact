@@ -11,15 +11,20 @@ export const messagesApi = {
             })) */
     },
 
-    getList: (callback, chatId) => {
+    getList: (callback) => {
         db
             .ref(`messages`)
             .on('value', (snapshot) => callback({
                 id: snapshot.key,
                 ...snapshot.val(),
-            }, console.log(snapshot.key),
-            console.log(snapshot.val()),), 
-            // поможить newMessage в callback ?    
-)
+            }, 
+            
+                console.log(snapshot.key),
+                console.log(snapshot.val()), // объект, пришедший из firebase
+                console.log(snapshot.child(`messages`).val()) // null
+                
+                ), 
+                // `messages/${chatId}/${id}`
+            )
     }
 }

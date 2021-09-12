@@ -18,7 +18,8 @@ export const CreateMessageForm = () => {
     const newMessage = {
       message: content,
       author: 'me',
-      chatId
+      chatId,
+      
     }
     
     try {
