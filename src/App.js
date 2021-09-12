@@ -27,7 +27,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    console.log (isAuth, prevIsAuth.current)
+    /* console.log (isAuth, prevIsAuth.current) */
     if (isAuth !== prevIsAuth.current) {
       dispatch(initChatsTracking);
       dispatch(initMessagesTracking);

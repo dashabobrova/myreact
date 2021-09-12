@@ -14,14 +14,20 @@ export const CreateMessageForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setContent('');
-
+    
+    const newMessage = {
+      message: content,
+      author: 'me',
+      chatId
+    }
+    
     try {
-      await messagesApi.create(content, chatId)
+      await messagesApi.create(newMessage, chatId)
     } catch (e){
       setError(e);
     }
-
+    setContent('');
+    
   };
   return (
     <div>
