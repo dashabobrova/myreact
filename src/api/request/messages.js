@@ -14,14 +14,22 @@ export const messagesApi = {
     getList: (callback) => {
         db
             .ref(`messages`)
-            .on('value', (snapshot) => callback({
-                id: snapshot.key,
-                ...snapshot.val(),
+            .on('value', (snapshot) => callback({ 
+                /* 
+
+                {
+                    {ключ},
+                    {данные, которые приходят из Fb}
+                } 
+                
+                */
+                id: snapshot.key, // если убрать приходит {}
+                ...snapshot.val(), // если убрать приходит {}
             }, 
-            
                 console.log(snapshot.key),
                 console.log(snapshot.val()), // объект, пришедший из firebase
-                console.log(snapshot.child(`messages`).val()) // null
+
+                //console.log(snapshot.child(`messages`).child(id).val()) // null
                 
                 ), 
                 // `messages/${chatId}/${id}`

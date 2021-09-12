@@ -11,8 +11,8 @@ export const Chat = (props) => {
 
     return (
         <div>
-            <CreateMessageForm chatId={chatId}/> 
-            <MessageList chatId={chatId}/>
+            <CreateMessageForm /> 
+            <MessageList />
         </div>
     )
 }

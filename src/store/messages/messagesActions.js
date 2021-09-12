@@ -20,3 +20,4 @@ export const initMessagesTracking = (dispatch) => {
         dispatch(createAddMessage(message))
     })
 }
+

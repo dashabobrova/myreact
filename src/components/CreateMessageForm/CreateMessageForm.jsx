@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { useParams } from "react-router";
 import { messagesApi } from "../../api/request/messages";
 
 export const CreateMessageForm = () => {
-  let {chatId} = useParams();
-
+  const {chatId} = useParams();
+  
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
 
@@ -19,7 +19,6 @@ export const CreateMessageForm = () => {
       message: content,
       author: 'me',
       chatId,
-      
     }
     
     try {

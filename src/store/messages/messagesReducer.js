@@ -31,8 +31,10 @@ export const messageReducer = (state = initialState, action) => {
             }
         } 
 */
+
         case ADD_MESSAGE: {
             const {chatId} = action.payLoad; // из payLoad достаю chatId; по нему сообщения привязываются к чату
+            console.log(chatId); // undefined
 
             // проверка: есть ли в списке чат по этому id?
             if(state.messages.hasOwnProperty(chatId)) { // ДА (т.е. уже добавляли в этот чат сообщения)
