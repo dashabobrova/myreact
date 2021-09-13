@@ -38,12 +38,9 @@ export const messageReducer = (state = initialState, action) => {
             // проверка: есть ли в списке чат по этому id?
             if(state.messages.hasOwnProperty(chatId)) { // ДА (т.е. уже добавляли в этот чат сообщения)
                     // hasOwnProperty - метод проверяет, есть ли в объекте свойство
-                state.messages[chatId] = [
-                    ...state.messages[chatId], // копия чата
-                    messages, // добавляем в чат новый элемент списка(сообщение)
-                ]
+                state.messages[chatId] = [...messages]
             } else { // НЕТ (первый раз добавляем сообщение в чат)
-                state.messages[chatId] = [...messages]// помещаем payLoad в массив и присваиваем по ключу chatId
+                state.messages[chatId] = [...messages] // помещаем в массив и присваиваем по ключу chatId
                                             // firebase всегда возвращает не последнее сообщение, а просто весь список включая новое сообщение
             }
 
