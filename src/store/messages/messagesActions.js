@@ -17,7 +17,7 @@ export const createAddMessage = (chatId, messages) => ({
 
 // подписка на изменение сотояния в базе данных; вызывается в эффекте App.js
 export const initMessagesTracking = (chatId) => (dispatch) => { 
-    messagesApi.getList(chatId, (message) => { 
-        dispatch(createAddMessage(message, chatId)) 
+    messagesApi.getList(chatId, (messages) => { 
+        dispatch(createAddMessage(chatId, messages)) 
     }) 
 }
