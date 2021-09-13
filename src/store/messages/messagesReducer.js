@@ -41,7 +41,8 @@ export const messageReducer = (state = initialState, action) => {
                 state.messages[chatId] = [...messages]
             } else { // НЕТ (первый раз добавляем сообщение в чат)
                 state.messages[chatId] = [...messages] // помещаем в массив и присваиваем по ключу chatId
-                                            // firebase всегда возвращает не последнее сообщение, а просто весь список включая новое сообщение
+                                            // firebase всегда возвращает не последнее сообщение, а просто весь список включая новое сообщение, 
+                                            // поэтому state.messages[chatId] = [...messages]
             }
 
             return {
