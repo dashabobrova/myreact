@@ -1,8 +1,9 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 import { messagesApi } from "../../api/request/messages";
 
 export const CreateMessageForm = () => {
+  
   const {chatId} = useParams();
   
   const [content, setContent] = useState("");

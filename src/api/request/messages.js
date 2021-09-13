@@ -11,31 +11,20 @@ export const messagesApi = {
             })) */
     },
 
-    getList: (callback) => {
+    getList: (chatId, callback) => {
         db
             .ref(`messages`)
-            .on('value', (snapshot) => callback({ 
-                /* 
+            .child(chatId)
+            .on('value', (snapshot) => {
+                const messages = []; // массив под сообщения
 
-                {
-                    {ключ},
-                    {данные, которые приходят из Fb}
-                } 
-                  а надо только 
+                // тут проходимся по списку сообщение и вытаскиваем каждое по очереди чтобы массив сделать
+                snapshot.forEach(entry => {
+                  messages.push(entry.val());
+                });
 
-                   {данные, которые приходят из Fb} поместить под chatId
-                
-                */
-                id: snapshot.key, // если убрать приходит {}
-                ...snapshot.val(), // если убрать приходит {}
-            }, 
-                console.log(snapshot.key),
-                console.log(snapshot.val()), // объект, пришедший из firebase
-
-                //console.log(snapshot.child(`messages`).child(id).val()) // null
-                
-                ), 
-                // `messages/${chatId}/${id}`
-            )
+                callback(messages)
+               
+            })
     }
 }

@@ -13,7 +13,6 @@ import { getIsAuth, initAuthAction } from './store/user';
 import { initChatsTracking } from './store/chats';
 import { useSelector } from 'react-redux';
 import { PrivateRoute } from './hocs/PrivateRoute/PrivateRoute';
-import { initMessagesTracking } from './store/messages';
 
 const App = () => {
   const isAuth = useSelector(getIsAuth);
@@ -30,7 +29,6 @@ const App = () => {
     /* console.log (isAuth, prevIsAuth.current) */
     if (isAuth !== prevIsAuth.current) {
       dispatch(initChatsTracking);
-      dispatch(initMessagesTracking);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth])
