@@ -20,8 +20,11 @@ export const messagesApi = {
                 
                 // тут проходимся по списку сообщение и вытаскиваем каждое по очереди чтобы массив сделать
                 snapshot.forEach(entry => {
-                  messages.push(entry.val());
-                  const id = entry.key;
+                  messages.push({
+                    _key: entry.key,
+                    ...entry.val()
+                  });
+                  // const id = entry.key;
                   // console.log(entry.key)
                 });
 
