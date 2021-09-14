@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import { messagesApi } from "../../api/request/messages";
 import { CreateMessageForm } from "../../components/CreateMessageForm/CreateMessageForm";
+import { nanoid } from 'nanoid';
 
 export const CreateMessageFormHOC = () => {
     const {chatId} = useParams();
@@ -19,6 +20,7 @@ export const CreateMessageFormHOC = () => {
       const newMessage = {
         message: content,
         author: 'me',
+        id,
         chatId,
       }
       

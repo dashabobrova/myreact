@@ -17,12 +17,15 @@ export const messagesApi = {
             .child(chatId)
             .on('value', (snapshot) => {
                 const messages = []; // массив под сообщения
-
+                
                 // тут проходимся по списку сообщение и вытаскиваем каждое по очереди чтобы массив сделать
                 snapshot.forEach(entry => {
                   messages.push(entry.val());
+                  const id = entry.key;
+                  // console.log(entry.key)
                 });
 
+                
                 callback(messages)
                
             })
@@ -33,7 +36,7 @@ export const messagesApi = {
 РАБОТА getList:
 
 первый объект snapshot если на нем просто вызвать метод val() вернет объект [key]:{} 
-но нам нужна иная структура, по этому мы с помощью forEach итерируем объект, 
+но нам нужна иная структура, поэтому мы с помощью forEach итерируем объект, 
 но тк SDK firebase не предоставляет доступ к данным напрямую, а делает это с помощью типа snapshot 
 то и итератор будет возвращать snapshot на котором мы вызываем метод val() и получаем объект сообщения, 
 а затем кладем его в массив. 
