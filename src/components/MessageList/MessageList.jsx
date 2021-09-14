@@ -13,8 +13,8 @@ const messages = useSelector(state => messagesSelectors.getMessage(state, chatId
         <div>
             {
                 messages?.map (({author, message, id}) => 
-                    <div key={id} className={s.message}>
-                    <div className={s.message__content}>
+                    <div className={s.message}>
+                    <div key={id} className={s.message__content}>
                         <strong>
                             <span className={s.message__content__author}>{author}</span><br />
                                 {message}
