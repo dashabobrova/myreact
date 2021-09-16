@@ -4,6 +4,7 @@ import { act, fireEvent } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useLoginState, handleSubmit } from './useLoginState';
 import {MemoryRouter} from 'react-router-dom';
+import { createMemoryHistory } from "history";
 import { userApi } from '../api/request/user';
 
 
@@ -39,59 +40,38 @@ describe('useState tests', () => {
     expect(result.current.error).toBe('error')
   })
 
- /*  test('вызов api', done => {
+/*   test('вызов api', () => {  
+  
+    const { result } = renderHook(() => useLoginState(), {wrapper: MemoryRouter});   
+   
+    const email = 'test@login.com';   
+    const password = '1111111';   
 
-    const { result } = renderHook(() => useLoginState(), {wrapper: MemoryRouter}); 
- 
+    act(() => {  
+      result.current.handleSubmit()  
+    })  
+
     act(() => {
-      result.current.handleSubmit()
+      result.current.setEmail('smth')
     })
 
-    const email = 'test@login.com'; 
-    const password = '1111111'; 
-     
-    function callback(data) { 
-      try { 
-        expect(handleSubmit()).tobe(email, password); 
-        done(); 
-      } catch (error) { 
-        done(error); 
-      } 
-    } 
-     
-    handleSubmit(callback); 
+    act(() => {
+      result.current.setPassword('111111')
+    })
+
+    act(() => {
+      result.current.setError('error')
+    })
+
+    expect(userApi.login).toHaveBeenLastCalledWith(email, password)
+    //expect(result.current.handleSubmit()).toBe('smth', '111111', 'error');
 
   }) */
-
-/*   test('вызов api', done => { 
- 
-    const { result } = renderHook(() => useLoginState(), {wrapper: MemoryRouter});  
   
-    act(() => { 
-      result.current.handleSubmit() 
-    }) 
- 
-    const email = 'test@login.com';  
-    const password = '1111111';  
-      
-    function callback(data) {  
-      try {  
-        expect(data).tobe(email, password); 
-        done();  
-      } catch (error) {  
-        done(error);  
-      }  
-    }  
-      
-    handleSubmit(callback);  
- 
+/*   test('вызов роутера (push)', () => {
+    const history = createMemoryHistory();
+
+    expect(history.location.pathname).toBe("/chatpage");
   }) */
-  
- /*  test('вызов роутера (push)', () => {
-    const { getByRole  } = renderHook(() => useLoginState(), {wrapper: MemoryRouter})
-
-    fireEvent.click(getByRole('button'));
-    expect(mockHistoryPush).toHaveBeenCalledWith('/chatpage');
-  })  */
 
 })

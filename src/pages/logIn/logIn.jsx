@@ -13,11 +13,18 @@ export const LogInIDs = {
   passwordField: 'LogIn-passwordField',
 }
 
+/* <form onSubmit={e => {
+  e.preventDefault();
+  props.addItem('test');
+}> */
+
 export const LogIn = ({email, password, error, handleSubmit, setEmail, setPassword}) => {
   return (
     <div>
     <h2 data-testid={LogInIDs.title}>Authorization</h2>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={e => 
+      { e.preventDefault(); 
+      handleSubmit()}} >
       <p data-testid={LogInIDs.paragraph1}>Fill in the form below to register new account.</p>
       <div>
       <input 
@@ -45,7 +52,7 @@ export const LogIn = ({email, password, error, handleSubmit, setEmail, setPasswo
       </div>
       <div>
         {error && <p>{error.toString()}</p>}
-        <button type="submit" data-testid={LogInIDs.button}>Login</button>
+        <button type="submit" data-testid={LogInIDs.button} >Login</button>
       </div>
       <hr />
       <p data-testid={LogInIDs.paragraph2}>

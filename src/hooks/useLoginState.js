@@ -8,8 +8,7 @@ export const useLoginState = () => {
     const [error, setError] = useState("");
     const {push} = useHistory();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         setError(null);
     
         try {
