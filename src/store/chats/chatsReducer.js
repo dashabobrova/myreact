@@ -1,11 +1,11 @@
 import { ADD_CHAT, ADD_CHATS/* , REMOVE_CHAT */ } from "./chatsActions"
 
-const initialState = {
+export const initialState = {
     chats: []
 }
 
 export const chatsReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch(action?.type) {
 
         case ADD_CHAT: {
             return {
@@ -23,7 +23,7 @@ export const chatsReducer = (state = initialState, action) => {
         }
 
         default: {
-            return state
+            return state;
         }
     }
 }

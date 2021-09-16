@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { chatsSelectors } from "../../store/chats";
-import { chatsApi } from "../../api/request/chats";
+import { ChatItem } from "../ChatItem/ChatItem";
 
 export const ChatList = () => {
     
@@ -12,14 +11,7 @@ export const ChatList = () => {
     return (
         <div>
             {
-                chats.map(({title,id}) => <Link to={`/chatpage/${id}`} key={id}>
-                        {title}
-                        <button onClick = {(event) => {
-                            event.stopPropagation();
-                            event.preventDefault();
-                            chatsApi.delete(id);
-                        }}>х</button><br />
-                    </Link>
+                chats.map(({title,id}) => <ChatItem title={title} id={id} key={id}/>
                 )
             }
         </div>

@@ -4,15 +4,14 @@ import { Switch, Route } from 'react-router-dom';
 import { Profile } from './pages/Profile/Profile';
 import { ChatPage } from './pages/ChatPage/ChatPage';
 import { Posts } from './pages/Posts/Posts';
-
 import { SignUp } from './pages/SignUp/SignUp';
-import { LogIn } from './pages/logIn/logIn';
 import { useDispatch} from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { getIsAuth, initAuthAction } from './store/user';
 import { initChatsTracking } from './store/chats';
 import { useSelector } from 'react-redux';
 import { PrivateRoute } from './hocs/PrivateRoute/PrivateRoute';
+import { LogInHOC } from './containers/LogInHOC/LogInHOC';
 
 const App = () => {
   const isAuth = useSelector(getIsAuth);
@@ -55,7 +54,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/logIn">
-          <LogIn />
+          <LogInHOC />
         </Route>
 
         <Route exact path="/">

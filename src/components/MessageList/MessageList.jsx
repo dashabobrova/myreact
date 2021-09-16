@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { useSelector } from "react-redux";
 import { messagesSelectors } from "../../store/messages";
 import { useParams } from "react-router";
-import s from './MessageItem.module.scss';
+import { MessageItem } from "../MessageItem/MessageItem";
 
 export const MessageList = () => {
 let {chatId} = useParams();
@@ -12,15 +12,8 @@ const messages = useSelector(state => messagesSelectors.getMessage(state, chatId
     return (
         <div>
             {
-                messages?.map (({author, message, id}) => 
-                    <div key={id} className={s.message}>
-                    <div className={s.message__content}>
-                        <strong>
-                            <span className={s.message__content__author}>{author}</span><br />
-                                {message}
-                        </strong>
-                    </div>
-                    </div>
+                messages?.map (({author, message, _key}) => 
+                    <MessageItem author={author} message={message} key={_key}/>
                 )
             }
         </div>
@@ -34,4 +27,4 @@ MessageList.propTypes = {
         content: propTypes.string,
         author: propTypes.string,
     }))
-}
+} 

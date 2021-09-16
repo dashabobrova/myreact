@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { CreateMessageForm } from "../../components/CreateMessageForm/CreateMessageForm";
 import { MessageList } from "../../components/MessageList/MessageList";
 import { initMessagesTracking } from "../../store/messages";
+import { CreateMessageFormHOC } from "../../containers/CreateMessageFormHOC/CreateMessageFormHOC";
 
 export const Chat = (props) => {
     const {chatId} = useParams(); // id из url
@@ -21,7 +21,7 @@ export const Chat = (props) => {
 
     return (
         <div>
-            <CreateMessageForm /> 
+            <CreateMessageFormHOC /> 
             <MessageList />
         </div>
     )

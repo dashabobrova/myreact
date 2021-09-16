@@ -1,7 +1,5 @@
 import { Button, makeStyles, TextField } from "@material-ui/core";
-import React, { useState } from "react";
-import { useHistory } from "react-router";
-import { chatsApi } from "../../api/request/chats.js";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,29 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const CreateChatForm = () => {
+export const CreateChatForm = ({handleEmailChange, handleSubmit, title, error}) => {
   const classes = useStyles();
-  const {push} = useHistory();
-
-  const [title, setTitle] = useState("");
-  const [error, setError] = useState("");
-
-  const handleEmailChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setTitle('');
-
-    try {
-      await chatsApi.create(title)
-      push('/chatpage')
-    } catch (e){
-      setError(e);
-    }
-
-  };
   
   return (
       <form onSubmit={handleSubmit} noValidate autoComplete="off">

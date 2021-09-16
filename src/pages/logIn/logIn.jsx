@@ -1,66 +1,56 @@
-import React, {useState} from 'react';
-import { useHistory } from 'react-router';
-import { userApi } from '../../api/request/user';
+import React from 'react';
 import {Link} from "react-router-dom";
 
-// АВТОРИЗАЦИЯ 
-export const LogIn = () => {
+// АВТОРИЗАЦИЯ (презентационный) 
 
-const {push} = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+export const LogInIDs = {
+  title: 'LogIn_title',
+  paragraph1: 'LogIn_paragraph1',
+  paragraph2: 'LogIn_paragraph2',
+  button: 'LogIn_buttonName',
 
-  const handlePassChange = (e) => {
-    setPassword(e.target.value);
-  };
+  logInField: 'LogIn-logInField',
+  passwordField: 'LogIn-passwordField',
+}
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-
-    try {
-      await userApi.login(email, password);
-      push('/chatpage');
-    } catch (e) {
-      setError(e);
-    }
-  };
-
+export const LogIn = ({email, password, error, handleSubmit, setEmail, setPassword}) => {
   return (
     <div>
-    <h2>Authorization</h2>
+    <h2 data-testid={LogInIDs.title}>Authorization</h2>
     <form onSubmit={handleSubmit}>
-      <p>Fill in the form below to register new account.</p>
+      <p data-testid={LogInIDs.paragraph1}>Fill in the form below to register new account.</p>
       <div>
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          onChange={handleEmailChange}
-          value={email}
+      <input 
+          placeholder="Email" 
+          name="email" 
+          type="email" 
+          onChange={(e) => {  
+            setEmail(e.target.value);  
+          }} 
+          value={email} 
+          data-testid={LogInIDs.logInField} 
         />
       </div>
       <div>
         <input
           placeholder="Password"
           name="password"
-          onChange={handlePassChange}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           value={password}
           type="password"
+          data-testid={LogInIDs.passwordField}
         />
       </div>
       <div>
         {error && <p>{error.toString()}</p>}
-        <button type="submit">Login</button>
+        <button type="submit" data-testid={LogInIDs.button}>Login</button>
       </div>
       <hr />
-      <p>
-        No account yet? <Link to="/signUp">Registration</Link>
+      <p data-testid={LogInIDs.paragraph2}>
+        No account yet? 
+        <Link to="/signUp">Registration</Link>
       </p> 
     </form>
   </div>
