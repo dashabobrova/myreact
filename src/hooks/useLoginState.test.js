@@ -10,14 +10,14 @@ import { userApi } from '../api/request/user';
 
 jest.mock('../api/request/user.js');
 
-const mockHistoryPush = jest.fn();
+/* const mockHistoryPush = jest.fn();
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useHistory: () => ({
     push: mockHistoryPush,
   }),
-}));
+})); */
 
 describe('useState tests', () => {
   it('should use setState value', () => {
